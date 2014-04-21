@@ -1,0 +1,11 @@
+LIBES = tdtdll
+PROG = testtdt
+LFLAGS = /MAP
+CFLAGS = -AL
+
+$(PROG).obj : $(PROG).c $(PROG)
+        cl -c $(CFLAGS) $(PROG).c
+
+$(PROG).exe : $(PROG).obj
+        link $(PROG),,, $(LIBES) $(LFLAGS);
+

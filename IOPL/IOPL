@@ -1,0 +1,16 @@
+PROG = anyapp
+CFLAGS = -AL -W3 -Lp -Zi -Od
+
+$(PROG).obj : $*.c $*
+        cl -c $(CFLAGS) $*.c
+
+io.obj : io.asm
+        masm io.asm;
+
+lio.obj : lio.asm
+        masm lio.asm;
+
+$(PROG).exe : $*.obj lio.obj io.obj $*
+        link $* io lio, $*,,,$(PROG).def /CO;
+
+

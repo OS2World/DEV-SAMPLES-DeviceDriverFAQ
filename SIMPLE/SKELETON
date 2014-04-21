@@ -1,0 +1,8 @@
+AFLAGS= /MX /T /P /L /Zi
+LFLAGS= /nod /noi /map /li
+
+skeleton.sys : skeleton.asm skeleton
+        masm $(AFLAGS) skeleton;
+        link $(LFLAGS) skeleton, skeleton.sys, skeleton, os2, dev;
+        mapsym skeleton
+
